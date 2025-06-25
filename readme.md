@@ -6,8 +6,19 @@ This is a collaborative OSSD project using Tkinter and GitHub...
 - Multi-screen GUI
 - Data persistence
 - GitHub collaboration
-muqadas jamil- team Leader
-Hamza Noor- frontend developer
-fayzan-UI/UX designer
-Iman-documentation
-hammad khan-backend developer(sql language)
+## 👥 Our Project Team
+
+> ### 🧠 Muqadas Jamil  
+> *Role:* Team Leader  
+>  
+> ### 🎨 Hamza Noor  
+> *Role:* Frontend Developer  
+>  
+> ### 🧾 Fayzan  
+> *Role:* UI/UX Designer  
+>  
+> ### 📚 Iman  
+> *Role:* Documentation  
+>  
+> ### 🛠️ Hammad Khan  
+> *Role:* Backend Developer (SQL)
