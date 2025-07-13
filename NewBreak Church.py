@@ -4,7 +4,7 @@ import os
 
 window = tk.Tk()
 window.title("NewBreak Church")
-window.geometry("800x700")
+window.geometry("800x700") 
 window.configure(bg="#333333")
 
 # Add border to header
