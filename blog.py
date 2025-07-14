@@ -2,6 +2,9 @@ import tkinter as tk
 from PIL import ImageTk, Image
 import os
 
+
+
+
 def create_blog_page():
     window = tk.Tk()
     window.title("Our Blog")
