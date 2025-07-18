@@ -1,5 +1,5 @@
 import tkinter as tk
-from tkinter import ttk, filedialog
+from tkinter import ttk, filedialog, messagebox
 from db import get_expenses, create_tables
 import csv
 from datetime import datetime
@@ -106,6 +106,13 @@ class ExpenseViewApp:
         from_d = self.from_date.get()
         to_d = self.to_date.get()
 
+        try:
+            from_date_obj = datetime.strptime(from_d, "%Y-%m-%d") if from_d else None
+            to_date_obj = datetime.strptime(to_d, "%Y-%m-%d") if to_d else None
+        except ValueError:
+            messagebox.showerror("Invalid Date", "Please enter dates in YYYY-MM-DD format.")
+            return
+
         def matches(row):
             date, cat, desc, _ = row
             if query and query not in desc.lower() and query not in cat.lower() and query not in date:
@@ -114,14 +121,12 @@ class ExpenseViewApp:
                 return False
             try:
                 date_obj = datetime.strptime(date, "%Y-%m-%d")
-                if from_d:
-                    if date_obj < datetime.strptime(from_d, "%Y-%m-%d"):
-                        return False
-                if to_d:
-                    if date_obj > datetime.strptime(to_d, "%Y-%m-%d"):
-                        return False
+                if from_date_obj and date_obj < from_date_obj:
+                    return False
+                if to_date_obj and date_obj > to_date_obj:
+                    return False
             except Exception:
-                pass
+                return False
             return True
 
         filtered = [row for row in self.expenses if matches(row)]
@@ -152,7 +157,7 @@ class ExpenseViewApp:
             for row_id in self.tree.get_children():
                 row = self.tree.item(row_id)["values"]
                 writer.writerow(row)
-        tk.messagebox.showinfo("Exported", "Data exported to CSV successfully!")
+        messagebox.showinfo("Exported", "Data exported to CSV successfully!")
 
 # Run for testing
 if __name__ == "__main__":
